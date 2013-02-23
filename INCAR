@@ -1,0 +1,84 @@
+SYSTEM = Generic Input
+
+!Initialisation:
+ NWRITE = 2        (Medium-level information output)   
+ ISTART = 1        (Read existing wavefunction; if there) 
+ INIWAV = 1        (Random initial wavefunction; otherwise)
+ ICORELEVEL = 1    (Print core levels)
+ !!ICHARG =  11    (Non-selfconsistent: GGA/LDA band structures)
+ !!NELECT = 352    (No. electrons: charged cells; be careful)
+ !!NBANDS = 35     (No. bands)
+
+!Parallelisation: 
+ LPLANE = .TRUE.   (Real space distribution; supercells)
+ !!NPAR   = 4      (Max is no. nodes; don't set for hybrids)
+
+!Electronic Relaxation:
+ PREC = Accurate   (Precision level)
+ LREAL = Auto      (Projection operators: automatic)
+ ALGO  = FAST      (SCF minimisation algorithm; 38/48 combo)
+ ENMAX = 500.00 eV (Plane-wave cutoff) 
+ NELM  = 50        (Max SCF steps)   
+ NELMIN = 5        (Min SCF steps)
+ EDIFF = 1E-06     (SCF energy convergence) 
+ ISPIN =  1        (Closed shell DFT)
+ !!ISPIN = 2       (Spin DFT)
+ GGA   =  PS       (PBEsol exchange-correlation)
+ ADDGRID = .TRUE.  (Increase grid; helps GGA convergence) 
+ !!LASPH = .TRUE.  (Non-spherical elements; d/f convergence)
+
+!Ionic Relaxation:
+ EDIFFG =  -0.005    (Ionic convergence; eV/AA^3)
+ NSW    =     50     (Max ionic steps) 
+ NBLOCK =      1     (Update XDATCAR every X steps) 
+ IBRION =      1     (Algorithm: 0-MD; 1-Quasi-New; 2-CG)
+ ISIF   =      3     (Stress/relaxation: 2-Ions, 3-Shape/Ions/V, 7-Vol)
+ ISYM   =      2     (Symmetry: 0-none; 2=GGA; 3=hybrids) 
+ ISMEAR =      0     (Gaussian smearing; metals:1)
+ SIGMA  =      0.01  (Smearing value in eV; metals:0.2)
+
+!Miscellaneous:
+ LORBIT    =   10     (PAW radii for projected DOS)
+ !!LORBIT  =    1     (Supply radii for projected DOS)
+ !!RWIGS   =  1.5 1.5 (Radii for each atomic species)  
+ !!LOPTICS = .TRUE.   (Output OPTIC file)
+ NEDOS   =   1000     (DOSCAR points)
+ !!LVTOT   = .TRUE.   (Electrostatic potential)
+ !!LELF    = .TRUE.   (Localisation function)
+ 
+!Decomposed Charge Density:
+ !!LPARD = .TRUE. (Generate PARCHG)
+ !!EINT  = -10 0  (Energy range)
+ !!NBMOD =  -3    (With reference to Ef)
+ !!KPUSE =  1     (Over k-points)
+ !!IBAND =  20    (Over bands)
+ 
+!Magnetic Calculations:
+ !!MAGMOM = 5 0      (Initial magnetic momoment on each ion)
+ !!NUPDOWN = -1      (Enforce spin multiplet)
+ !!LSORBIT = .TRUE.  (Spin-orbit coupling)
+
+!DFT+U Calculations:
+ !!LDAU = .TRUE.    (Activate DFT+U)
+ !!LDATYPE = 2      (Dudarev; only U-J matters)
+ !!LDAUL = 2 -1     (Orbitals for each species) 
+ !!LDAUU = 2  0     (U for each species)
+ !!LDAUJ = 0  0     (J for each species) 
+ LMAXMIX  =  4      (Mixing cut-off; 4-d, 6-f)
+
+!Hybrid-DFT Calculations: 
+ !!LHFCALC = .TRUE. (Activate HF)
+ !!PRECFOCK = F     (HF FFT grid)
+ !!NKRED   = 2      (Reduce k-grid-even only)
+ !!ALGO    = DAMPED (Dampened MD SCF; IALGO=53)
+ !!ALGO    = All    (SCF Combo; ALGO=58)
+ !!TIME    = 0.30   (Timestep for IALGO5X)  
+ !!HFLMAX  = 4      (HF cut-off: 4d,6f) 
+ !!HFSCREEN = 0.207 (Switch to screened exchange; e.g. HSE06)
+ !!AEXX    = 0.25   (25% HF exchange; e.g. PBE0)
+
+!Molecular Dynamics:
+ !!POTIM  =      10    (Timestep in fs)
+ !!TEBEG  =     100    (Start temp K)
+ !!TEEND  =     100    (End temp K)
+ !!SMASS  =       0    (Canonical ensemble)
