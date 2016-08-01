@@ -30,7 +30,7 @@ SYSTEM = WMD Input
  !!LASPH = .TRUE.  (Non-spherical elements; d/f convergence)
 
 !Ionic Relaxation:
- EDIFFG =  -0.005    (Ionic convergence; eV/AA^3)
+ EDIFFG =  -0.005    (Ionic convergence; eV/AA)
  NSW    =     50     (Max ionic steps) 
  NBLOCK =      1     (Update XDATCAR every X steps) 
  IBRION =      1     (Algorithm: 0-MD; 1-Quasi-New; 2-CG)
